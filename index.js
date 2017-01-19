@@ -10,7 +10,6 @@ const APP_ID = undefined;
 
 
 const commandStrings = {
-    'Report-Meetups': {
         translation: {
             MEETUP_DETAILS: meetups;
             SKILL_NAME: 'Get my next Meetup',
@@ -19,7 +18,6 @@ const commandStrings = {
             HELP_REPROMPT: 'What can I help you with?',
             STOP_MESSAGE: 'Goodbye!',
         },
-    },
     
 };
 
