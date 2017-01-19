@@ -4,17 +4,16 @@
 
 const Alexa = require('alexa-sdk');
 
-const meetups = require('src/getmeetups');
+const meetups = require('src/getmeetups.js');
 
-const APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
+const APP_ID = undefined;  
 
-var details =  require(getmeetups.js);
 
 const commandStrings = {
     'Report-Meetups': {
         translation: {
-            MEETUP_DETAILS: details;
-            SKILL_NAME: 'Get next Meetup',
+            MEETUP_DETAILS: meetups;
+            SKILL_NAME: 'Get my next Meetup',
             GET_FACT_MESSAGE: "Here is the next Meetup you plan on attending: ",
             HELP_MESSAGE: 'You can say tell me my next Meetup, or, you can say exit... What can I help you with?',
             HELP_REPROMPT: 'What can I help you with?',
@@ -34,13 +33,16 @@ const handlers = {
     'GetMeetups': function () {
         // Get a meetup from the user's feed
         // Use this.t() to get corresponding language data
-        const meetupArr = this.t('MEETUP_DETAILS');
-        const factIndex = Math.floor(Math.random() * factArr.length);
-        const randomFact = factArr[factIndex];
+        const details = this.t('MEETUP_DETAILS');
+        const eventName = details.event;
+        const date = details.date;
+        const venue = details.place;
+        const location = details.city;
 
+        var sentence = "Your next event is " + eventName + " at " + date + " at " + venue + " in " + location;
         // Create speech output
-        const speechOutput = this.t('GetMeetups') + randomFact;
-        this.emit(':tellWithCard', speechOutput, this.t('SKILL_NAME'), randomFact);
+        const speechOutput = this.t('GetMeetups') + sentence;
+        this.emit(':tellWithCard', speechOutput, this.t('SKILL_NAME'), sentence);
     },
     'AMAZON.HelpIntent': function () {
         const speechOutput = this.t('HELP_MESSAGE');

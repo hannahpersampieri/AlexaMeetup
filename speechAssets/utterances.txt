@@ -1,0 +1,11 @@
+GetNewEventIntent my events
+GetNewEventIntent my next event
+GetNewEventtIntent event coming up
+GetNewEventIntent events soon
+GetNewEventIntent my meetups
+GetNewEventIntent give me my next meetup
+GetNewEventIntent my next meetup
+GetNewEventIntent upcoming meetup
+GetNewEventIntent upcoming events
+
+
